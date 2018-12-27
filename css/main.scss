@@ -9,12 +9,20 @@ body, html {
     }
 }
 
+body {
+    background-image: url("../img/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 header {
     padding: 2em;
 
     .logo{
-        color:black;
+        color: rgba(255,255,230, 1);
         font-weight: bold;
+        font-size: 18px;
     }
 
 
@@ -39,7 +47,7 @@ section {
 nav {
     z-index: 100;
     position: absolute;
-    background: black;
+    background: #1a577a;
     padding: 2em;
     width: calc(100% - 4em);
     height: calc(100vh - 4em);
@@ -63,12 +71,12 @@ nav {
         width: 80%;
 
         a {
-            color: white;
+            color: rgba(255,255,230, 1);
             font-weight: bold;
             font-size: 1.4em;
         }
         span {
-            color:gray;
+            color: lightgray;
             display: block;
             font-size: 1em;
             margin-top: 20px;
@@ -127,7 +135,6 @@ nav {
         opacity: 1;
     }
 }
-
 @keyframes menu-item-anim {
     0% { opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 300, 0, 1); }
     4.1% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 125.912, 0, 1); }
@@ -141,13 +148,16 @@ nav {
     100% {opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
 }
 
+
 .glitch{
   color:black;
   font-size:68px;
   position:relative;
   width:400px;
   margin:3em auto;
-  border-top: 10px solid lightgray;
+  border-radius: 20%;
+  border-top: 5px solid #000;
+  border-bottom: 5px solid #000;  
 }
 @keyframes noise-anim{
   $steps:20;
@@ -161,10 +171,10 @@ nav {
   content:attr(data-text);
   position:absolute;
   left:2px;
-  text-shadow:-1px 0 green;
+  text-shadow:-1px 0 #0FF;
   top:0;
   color:black;
-  background:white;
+  background:transparent;
   overflow:hidden;
   clip:rect(0,900px,0,0); 
   animation:noise-anim 2s infinite linear alternate-reverse;
@@ -185,7 +195,7 @@ nav {
   text-shadow:1px 0 blue; 
   top:0;
   color:black;
-  background:white;
+  background:transparent;
   overflow:hidden;
   clip:rect(0,900px,0,0); 
   animation:noise-anim-2 3s infinite linear alternate-reverse;
