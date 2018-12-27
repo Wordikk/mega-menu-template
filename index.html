@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mega menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<body>
+    
+    <nav id="overlay">
+        <img src="img/close.svg" class="close-btn" id="close-menu">
+
+        <ul>
+            <li>
+                <a href="#">home</a>
+                <span>hurry, get back to the choppa!</span>
+            </li>
+            <li>
+                <a href="#">about us</a>
+                <span>lets find out!</span>
+            </li>
+            <li>
+                <a href="#">services</a>
+                <span>we can easily help you</span>
+            </li>
+            <li>
+                <a href="#">contact</a>
+                <span>call us immediately!</span>
+            </li>
+        </ul>
+    </nav>
+
+    <header>
+        <a href="#" class="logo">mysite</a>
+
+        <img src="img/menu.svg" class="menu-btn" id="open-menu">
+    </header>
+
+    <section>
+        <h1>this is fancy</h1>
+    </section>
+
+    <script>
+        var overlay = document.getElementById('overlay');
+        var closeMenu = document.getElementById('close-menu');
+
+        document.getElementById('open-menu').addEventListener('click', function() {
+            overlay.classList.add('show-menu');
+        });
+        document.getElementById('close-menu').addEventListener('click', function() {
+            overlay.classList.remove('show-menu');
+        });
+        
+    </script>
+</body>
+</html>
