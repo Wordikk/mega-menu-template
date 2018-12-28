@@ -1,11 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 
+$phone: 840px;
+
+@mixin phone {
+    @media (max-width:#{$phone} ){
+        @content; 
+    }
+    
+}
 body, html {
     font-family: 'Montserrat';
     margin: 0;
 
     a {
         text-decoration: none;
+        cursor: default;
     }
 }
 
@@ -14,6 +23,10 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+
+    @include phone {
+        background-position: center;
+    }
 }
 
 header {
@@ -43,7 +56,20 @@ section {
         text-align: center;
     }
 }
-
+footer {
+    position: absolute;
+    display: block;
+    width: 244px;
+    font-size: 14px;
+    margin: 0 auto;
+    bottom: 0;
+    right: 0;
+    
+    @include phone {
+        width: 175px;
+        font-size: 10px;
+    }
+}
 nav {
     z-index: 100;
     position: absolute;
@@ -84,7 +110,19 @@ nav {
 
         li {
             opacity: 0;
+            
+            @include phone {
+                margin-bottom: 4em;
+
+            }
+
         }
+        @include phone {
+            display: block;
+            text-align: center;
+            margin: 5em auto 0 auto;
+        }
+
     }
 }
 
@@ -151,13 +189,20 @@ nav {
 
 .glitch{
   color:black;
-  font-size:68px;
+  font-size:63px;
   position:relative;
+  font-weight: bold;
   width:400px;
   margin:3em auto;
   border-radius: 20%;
-  border-top: 5px solid #000;
-  border-bottom: 5px solid #000;  
+
+
+  @include phone {
+      border: none;
+      font-size: 39px;
+      width: 245px;
+      font-weight: 600;
+  }
 }
 @keyframes noise-anim{
   $steps:20;
@@ -178,6 +223,9 @@ nav {
   overflow:hidden;
   clip:rect(0,900px,0,0); 
   animation:noise-anim 2s infinite linear alternate-reverse;
+  @include phone {
+    
+  }
 }
 
 @keyframes noise-anim-2{
@@ -199,4 +247,7 @@ nav {
   overflow:hidden;
   clip:rect(0,900px,0,0); 
   animation:noise-anim-2 3s infinite linear alternate-reverse;
+  @include phone {
+    
+  }
 }
