@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 
+$colors: (
+    primary: #ffffe6,
+    secondary: #d3d3d3,
+    glitch: #000000, 
+    bg-color: #1a577a
+);
+
+@function color($color-name){
+    @return map-get($colors, $color-name)
+}
+
 $phone: 840px;
 
 @mixin phone {
@@ -14,7 +25,6 @@ body, html {
 
     a {
         text-decoration: none;
-        cursor: default;
     }
 }
 
@@ -33,9 +43,10 @@ header {
     padding: 2em;
 
     .logo{
-        color: rgba(255,255,230, 1);
+        color: color(primary);
         font-weight: bold;
         font-size: 18px;
+        cursor: default;
     }
 
 
@@ -56,24 +67,108 @@ section {
         text-align: center;
     }
 }
+.img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 700px;
+        height: 495px;
+        perspective: 1000px;
+        
+        @include phone{
+            width: 275px;
+            height: 195px;
+        }
+}
+        .img a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                url("../img/skyscraper.jpg");
+            background-size: 0, cover;
+            transform-style: preserve-3d;
+            transition: all 0.5s;
+            border-radius: 450px 10px 450px 10px;
+        }
+        .img:hover a {
+            transform: rotateX(80deg);
+            transform-origin: bottom;
+        }
+        .thumb a:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 36px;
+            background: inherit;
+            background-size: cover, cover;
+            background-position: bottom;
+            transform: rotateX(90deg);
+            transform-origin: bottom;
+        }
+        .img a span {
+            color: color(glitch);
+            text-transform: uppercase;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            transform: rotateX(-89.99deg);
+            transform-origin: top;
+            z-index: 1;
+            text-shadow: 3px 0px 5px color(secondary);
+
+            @include phone {
+                font-size: 16px;
+            }
+        }
+        .img a:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 100px 50px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s;
+            opacity: 0.15;
+            transform: rotateX(95deg) translateZ(-80px) scale(0.75);
+            transform-origin: bottom;
+        }
+        
+        .img:hover a:before {
+            opacity: 1;
+            box-shadow: 0 0 25px 25px rgba(0, 0, 0, 0.3);
+            transform: rotateX(0) translateZ(-60px) scale(0.85);
+        }
+
+
+
+
 footer {
     position: absolute;
     display: block;
-    width: 244px;
-    font-size: 14px;
+    width: 230px;
+    font-size: 13px;
     margin: 0 auto;
     bottom: 0;
     right: 0;
     
     @include phone {
-        width: 175px;
+        width: 177px;
         font-size: 10px;
     }
 }
 nav {
     z-index: 100;
     position: absolute;
-    background: #1a577a;
+    background: color(bg-color);
     padding: 2em;
     width: calc(100% - 4em);
     height: calc(100vh - 4em);
@@ -97,12 +192,12 @@ nav {
         width: 80%;
 
         a {
-            color: rgba(255,255,230, 1);
+            color: color(primary);
             font-weight: bold;
-            font-size: 1.4em;
+            font-size: 1.6em;
         }
         span {
-            color: lightgray;
+            color: color(secondary);
             display: block;
             font-size: 1em;
             margin-top: 20px;
@@ -188,20 +283,20 @@ nav {
 
 
 .glitch{
-  color:black;
-  font-size:63px;
+  color: color(glitch);
+  font-size:60px;
   position:relative;
   font-weight: bold;
   width:400px;
   margin:3em auto;
-  border-radius: 20%;
-
+  margin-bottom: 60px;
 
   @include phone {
       border: none;
       font-size: 39px;
       width: 245px;
       font-weight: 600;
+      margin-bottom: 100px;
   }
 }
 @keyframes noise-anim{
@@ -218,7 +313,7 @@ nav {
   left:2px;
   text-shadow:-1px 0 #0FF;
   top:0;
-  color:black;
+  color: color(glitch);
   background:transparent;
   overflow:hidden;
   clip:rect(0,900px,0,0); 
@@ -242,7 +337,7 @@ nav {
   left:-2px;
   text-shadow:1px 0 blue; 
   top:0;
-  color:black;
+  color: color(glitch);
   background:transparent;
   overflow:hidden;
   clip:rect(0,900px,0,0); 
