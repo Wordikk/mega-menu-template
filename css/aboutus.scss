@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700');
+
+$colors: (
+    primary: #ffffe6,
+    secondary: #d3d3d3,
+    txt-color: #000000, 
+    bg-color: #1a577a
+);
+
+@function color($color-name){
+    @return map-get($colors, $color-name)
+}
+
+$phone: 840px;
+
+@mixin phone {
+    @media (max-width:#{$phone} ){
+        @content; 
+    }
+    
+}
+body, html {
+    font-family: 'Montserrat';
+    margin: 0;
+
+    a {
+        text-decoration: none;
+    }
+}
+
+body {
+    background-image: url("../img/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+    @include phone {
+        background-position: center;
+    }
+}
+
+header {
+    padding: 2em;
+
+    .logo{
+        color: color(primary);
+        font-weight: bold;
+        font-size: 18px;
+        cursor: default;
+    }
+
+
+    .menu-btn{
+        width: 30px;
+        float: right;
+        cursor: pointer;
+    }
+}
+footer {
+    position: absolute;
+    display: block;
+    width: 230px;
+    font-size: 13px;
+    margin: 0 auto;
+    bottom: 0;
+    right: 0;
+    
+    @include phone {
+        width: 177px;
+        font-size: 10px;
+    }
+}
+nav {
+    z-index: 100;
+    position: absolute;
+    background: color(bg-color);
+    padding: 2em;
+    width: calc(100% - 4em);
+    height: calc(100vh - 4em);
+    display: none;
+    transform: scaleX(0);
+    transform-origin: right;
+
+    .close-btn{
+        width: 30px;
+        float: right;
+        cursor: pointer;
+        opacity: 0;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 10% auto 0 auto;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(4, 25%);
+        width: 80%;
+
+        a {
+            color: color(primary);
+            font-weight: bold;
+            font-size: 1.6em;
+        }
+        span {
+            color: color(secondary);
+            display: block;
+            font-size: 1em;
+            margin-top: 20px;
+        }
+
+        li {
+            opacity: 0;
+            
+            @include phone {
+                margin-bottom: 4em;
+
+            }
+
+        }
+        @include phone {
+            display: block;
+            text-align: center;
+            margin: 5em auto 0 auto;
+        }
+
+    }
+}
+
+.show-menu {
+    display: block;
+    animation: slide-menu 1s ease-in forwards;
+
+    .close-btn {
+        animation: show-x 1s 1s forwards;
+    }
+
+    li:nth-of-type(1) {
+        animation: menu-item-anim .6s forwards 1s ease-in-out;
+
+    }
+    
+    li:nth-of-type(2) {
+        animation: menu-item-anim .6s forwards 1.2s ease-in-out;
+
+    }
+    
+    li:nth-of-type(3) {
+        animation: menu-item-anim .6s forwards 1.4s ease-in-out;
+
+    }
+    
+    li:nth-of-type(4) {
+        animation: menu-item-anim .6s forwards 1.6s ease-in-out;
+
+    }
+
+}
+
+@keyframes slide-menu {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes show-x {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes menu-item-anim {
+    0% { opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 300, 0, 1); }
+    4.1% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 125.912, 0, 1); }
+    8.11% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 31.647, 0, 1); }
+    12.11% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -5.53, 0, 1); }
+    16.12% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -13.007, 0, 1); }
+    27.23% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -2.352, 0, 1); }
+    38.34% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0.311, 0, 1); }
+    60.56% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.007, 0, 1); }
+    82.78% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+    100% {opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+}
+.about-cont {
+
+    .about {
+    font-size: 36px;
+    text-transform: uppercase;
+    margin-left: 2em;
+    font-weight: bold;
+    border-bottom: 5px solid color(txt-color);
+
+    @include phone {
+        font-size: 24px;
+    }
+    }
+}
+.main-cont {
+    height: 466px;
+    background: color(bg-color);
+    display: block;
+    width: 1400px;
+    padding: 50px;
+    margin: 8em auto 0 auto;
+    border-radius: 60px;
+
+    .galery{ 
+        display: inline-block;
+        position: relative;
+        float: left;
+        top: 3.5em;
+        left: 5em;
+
+        img {
+            width: 400px;
+            height: 325px;
+            
+            @include phone{
+                width: 215px;
+                height: 125px;
+            }
+        }
+        div {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        @include phone{
+            width: 235px;
+            height: 125px;
+            margin-bottom: 20px;
+            top:0px;
+            left:0px;
+        }
+    }
+    .main-text {
+        width: 700px;
+        height: 400px;
+        float: right;
+        background: color(primary);
+        padding: 2em;
+        font-size: 18px;
+        font-weight: 500;
+        border-radius: 30px;
+        
+        p {
+            font-size: 26px;
+            margin: 0 0 1em 0;
+            font-weight: bold;
+            color: #ffffe6;
+            background: #1a577a;
+            padding: 5px;
+            width: 380px;
+            border-radius: 30px;
+            text-align: left;
+
+            @include phone {
+                font-size: 14px;
+                width: 210px;
+                margin: 0 0 5px 0;
+            }
+        }
+        @include phone {
+            font-size: 11px;
+            width: 220px;
+            padding: 10px;
+
+        }    
+    }
+
+    @include phone {
+        margin: 4em 20px 0 20px;
+        height: 530px;
+        font-size: 12px;
+        border-radius: 10px;
+        width: 240px;
+        padding-top: 10px;
+    }
+}
