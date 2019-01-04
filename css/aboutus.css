@@ -306,7 +306,6 @@ nav ul li {
 .main-cont .galery {
   display: inline-block;
   position: relative;
-  float: left;
   top: 3.5em;
   left: 5em;
 }
