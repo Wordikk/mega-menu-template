@@ -248,24 +248,31 @@ nav {
         font-size: 18px;
         font-weight: 500;
         border-radius: 30px;
-        
-        p {
+
+        .text-title {
+            padding: 15px;
             font-size: 26px;
             margin: 0 0 1em 0;
             font-weight: bold;
             color: #ffffe6;
             background: #1a577a;
-            padding: 5px;
             width: 380px;
             border-radius: 30px;
-            text-align: left;
+            text-align: center;
+        }
 
             @include phone {
                 font-size: 14px;
                 width: 210px;
                 margin: 0 0 5px 0;
+                
+                .text-title {
+                    padding: 1px;
+                    width: 220px;
+                    font-size: 15px;
+                }
             }
-        }
+
         @include phone {
             font-size: 11px;
             width: 220px;

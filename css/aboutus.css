@@ -351,23 +351,28 @@ nav ul li {
   border-radius: 30px;
 }
 
-.main-cont .main-text p {
+.main-cont .main-text .text-title {
+  padding: 15px;
   font-size: 26px;
   margin: 0 0 1em 0;
   font-weight: bold;
   color: #ffffe6;
   background: #1a577a;
-  padding: 5px;
   width: 380px;
   border-radius: 30px;
-  text-align: left;
+  text-align: center;
 }
 
 @media (max-width: 840px) {
-  .main-cont .main-text p {
+  .main-cont .main-text {
     font-size: 14px;
     width: 210px;
     margin: 0 0 5px 0;
+  }
+  .main-cont .main-text .text-title {
+    padding: 1px;
+    width: 220px;
+    font-size: 15px;
   }
 }
 
